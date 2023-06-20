@@ -2,8 +2,7 @@
 
 namespace common.portal.com.Interface
 {
-    public interface IStarbucksService
+    public interface ICustomerDal:IGenericDal<Customer>
     {
-        Customer? SaveToDb(Customer customer);
     }
 }

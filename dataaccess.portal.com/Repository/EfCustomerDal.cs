@@ -1,11 +1,6 @@
 ﻿using common.portal.com.Entity;
 using dataccess.portal.com.Context;
-using dataccess.portal.com.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using common.portal.com.Interface;
 
 namespace dataccess.portal.com.Repository
 {

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace common.portal.com.Entity
 {
@@ -14,6 +9,6 @@ namespace common.portal.com.Entity
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public long NationalityId { get; set; }
- 
+
     }
 }

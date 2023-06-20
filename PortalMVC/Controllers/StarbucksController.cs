@@ -1,6 +1,5 @@
 ﻿using common.portal.com.Entity;
 using common.portal.com.Interface;
-using common.portal.com.Validator;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -34,7 +33,6 @@ namespace CoffeeAppMVC.Controllers
         {
             try
             {
-
                 Customer addedCustomer = _starbucksService.SaveToDb(customer);
                 TempData["Message"] = customer.FirstName;
                 return RedirectToAction("Message");
@@ -45,7 +43,6 @@ namespace CoffeeAppMVC.Controllers
                 TempData["Message"] = ex.Message;
                 return RedirectToAction("ErrorMessage");
             }
-
         }
 
         public IActionResult Message()

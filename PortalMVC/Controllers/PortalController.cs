@@ -29,8 +29,6 @@ namespace CoffeeAppMVC.Controllers
         [HttpPost]
         public IActionResult AddCustomer(Customer customer)
         {
-           
-
             try
             {
                 Customer addedCustomer = _portalService.SaveToDb(customer);
@@ -43,8 +41,6 @@ namespace CoffeeAppMVC.Controllers
                 TempData["Message"] = ex.Message;
                 return RedirectToAction("ErrorMessage");
             }
-
-           
         }
 
         public IActionResult Message()
