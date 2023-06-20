@@ -9,6 +9,6 @@ namespace common.portal.com.Interface
 {
     public interface IPortalService
     {
-        Task<Customer?> SaveToDb(Customer customer);
+        Customer? SaveToDb(Customer customer);
     }
 }

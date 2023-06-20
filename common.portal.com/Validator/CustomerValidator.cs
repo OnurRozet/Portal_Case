@@ -14,10 +14,11 @@ namespace common.portal.com.Validator
         private bool _validateNationalityId;
         MernisServiceAdapter _mernisServiceAdapter;
 
-        public CustomerValidator(bool validateNationalityId = true)
+        public CustomerValidator(bool validateNationalityId = false)
         {
             _validateNationalityId = validateNationalityId;
            _mernisServiceAdapter = new MernisServiceAdapter();
+           
         }
 
         public bool IsValidRequest(Customer customer)
@@ -31,15 +32,15 @@ namespace common.portal.com.Validator
 
         public bool Validate(Customer customer)
         {
-            bool isNationalityIdValid = false;
+            bool isNationalityIdValid = true;
             if (IsValidRequest(customer)==false)
             {
-                throw new Exception("Required fields are not provided");
+                throw new ApplicationException("Required fields are not provided");
             }
 
             if (_validateNationalityId)
             {
-              
+                isNationalityIdValid = false;
                 //Mernis check yap
 
                 //mernis true dönerse değişken oluştur
@@ -48,12 +49,11 @@ namespace common.portal.com.Validator
                     isNationalityIdValid = true;
                 }
                 //false dönerse 
+                
                 if (isNationalityIdValid==false)
                 {
-                    throw new Exception("Kps  is not valid");
+                    throw new ApplicationException("Kps is not valid");
                 }
-
-               
             }
 
             return isNationalityIdValid;

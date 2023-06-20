@@ -12,22 +12,20 @@ namespace business.portal.com.Service
 {
     public class StarbucksCustomerService : IStarbucksService
     {
-       
-        ICustomerDal _customerDal;
         CustomerValidator _customerValidator;
 
-        public StarbucksCustomerService( ICustomerDal customerDal)
+        public StarbucksCustomerService()
         {
-            
-            _customerDal = customerDal;
-            _customerValidator = new CustomerValidator();
+          
+            _customerValidator = new CustomerValidator(validateNationalityId:true);
         }
 
       
         public  Customer? SaveToDb(Customer customer)
         {
             _customerValidator.Validate(customer);
-          return  _customerDal.InsertCustomer(customer);
+
+            return customer;
             
         }
     }

@@ -1,5 +1,6 @@
 ﻿using common.portal.com.Entity;
 using common.portal.com.Interface;
+using common.portal.com.Validator;
 using dataccess.portal.com.Interface;
 using System;
 using System.Collections.Generic;
@@ -11,27 +12,20 @@ namespace business.portal.com.Service
 {
     public class PortalCustomerService : IPortalService
     {
-        ICustomerDal _customerDal;
-
-        public PortalCustomerService(ICustomerDal customerDal)
+     
+        private CustomerValidator _customerValidator;
+        public PortalCustomerService()
         {
-            _customerDal = customerDal;
+            
+            _customerValidator = new CustomerValidator(validateNationalityId:false);
         }
-
-        public bool isValidCustomer(Customer customer)
+        public  Customer? SaveToDb(Customer customer)
         {
-            if (customer.Id == 0 && string.IsNullOrWhiteSpace(customer.FirstName) && string.IsNullOrWhiteSpace(customer.LastName) && customer.NationalityId.ToString().Length != 11 && customer.DateOfBirth == null)
-            {
-                return false;
-            }
-            return true;
-        }
-        public async Task<Customer?> SaveToDb(Customer customer)
-        {
-            isValidCustomer(customer);
 
-            Customer addedCustomer = _customerDal.InsertCustomer(customer);
-            return addedCustomer;
+            _customerValidator.Validate(customer);
+
+            return customer;
+         
         }
     }
 }
